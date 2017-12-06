@@ -14,6 +14,8 @@ namespace TeamCityTheatre.Core.QueryServices.Models {
     {
       get
       {
+        if (Builds == null) { return BuildStatus.Unknown; }
+
         var defaultBranchBuild = Builds.FirstOrDefault(b => b.IsDefaultBranch);
         return defaultBranchBuild?.Status ?? (Builds.All(b => b.Status == BuildStatus.Success) ? BuildStatus.Success : BuildStatus.Error);
       }

@@ -23,6 +23,7 @@ namespace TeamCityTheatre.Core.DataServices {
                                     "running-info(percentageComplete,elapsedSeconds,estimatedTotalSeconds,currentStageText),queuedDate,startDate,finishDate)");
       request.AddUrlSegment("count", Convert.ToString(count));
       request.AddUrlSegment("buildConfigurationId", buildConfigurationId);
+      Console.WriteLine(buildConfigurationId);
       var response = await _teamCityClient.ExecuteRequestAsync<BuildsResponse>(request);
       return _buildMapper.Map(response);
     }
